@@ -12,7 +12,7 @@ const CLINIC = {
   address: "2nd floor DG's Building, Don V. Robles, Poblacion 3, Tiaong, Quezon",
   phone: "+639175605585",
   // TODO: put your real GCash number and/or QR code image here.
-  gcashNumber: "09XX-XXX-XXXX (clinic to fill in)",
+  gcashNumber: "0949 801 2414 (Aaron Paul Aniciete)",
 };
 
 // Doctor's weekly hours. Every day is open — Thursday just closes earlier.
