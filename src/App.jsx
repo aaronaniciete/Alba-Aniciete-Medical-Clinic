@@ -223,12 +223,10 @@ function BookingForm({ onDone, onCancel }) {
   const isDateOpenAtAll = apptDate ? daySlots.length > 0 : true;
 
   function validate() {
+    // Only what's needed to actually hold the slot and follow up is required — everything
+    // else (DOB, sex, guardian, address, allergies) can be filled in later if it's missing.
     if (!name.trim()) return "Please enter the patient's full name.";
-    if (!dob) return "Please enter a date of birth.";
-    if (isMinor && !guardian.trim()) return "Please enter a parent/guardian name for a minor.";
-    if (!sex) return "Please select sex.";
-    if (!contact.trim()) return "Please enter a contact number.";
-    if (!address.trim()) return "Please enter an address.";
+    if (!contact.trim()) return "Please enter a contact number so we can reach you.";
     if (!apptDate) return "Please choose an appointment date.";
     if (!apptTime) return "Please choose an appointment time.";
     if (!gcashReference.trim()) return "Please enter your GCash payment reference number.";
@@ -270,17 +268,17 @@ function BookingForm({ onDone, onCancel }) {
 
   return (
     <div style={styles.card}>
-      <h1 style={styles.h1}>Appointment</h1>
+      <h1 style={styles.h1}>Patient & appointment details</h1>
 
       <SectionLabel>Patient information</SectionLabel>
       <Field label="Full name">
         <input style={styles.input} value={name} onChange={(e) => setName(e.target.value)} />
       </Field>
       <Row>
-        <Field label="Date of birth" style={{ flex: 1 }}>
+        <Field label="Date of birth (optional)" style={{ flex: 1 }}>
           <input type="date" style={styles.input} value={dob} onChange={(e) => setDob(e.target.value)} max={todayIso()} />
         </Field>
-        <Field label="Sex" style={{ flex: 1 }}>
+        <Field label="Sex (optional)" style={{ flex: 1 }}>
           <select style={styles.input} value={sex} onChange={(e) => setSex(e.target.value)}>
             <option value="">Select</option>
             <option>Male</option>
@@ -289,17 +287,17 @@ function BookingForm({ onDone, onCancel }) {
         </Field>
       </Row>
       {age !== null && (
-        <div style={styles.hint}>{age} years old{isMinor ? " — a parent/guardian name is needed below" : ""}</div>
+        <div style={styles.hint}>{age} years old{isMinor ? " — a parent/guardian name below is helpful, if known" : ""}</div>
       )}
       {isMinor && (
-        <Field label="Parent / guardian name">
+        <Field label="Parent / guardian name (optional)">
           <input style={styles.input} value={guardian} onChange={(e) => setGuardian(e.target.value)} />
         </Field>
       )}
       <Field label="Contact number">
         <input style={styles.input} value={contact} onChange={(e) => setContact(e.target.value)} placeholder="09XX XXX XXXX" />
       </Field>
-      <Field label="Address">
+      <Field label="Address (optional)">
         <input style={styles.input} value={address} onChange={(e) => setAddress(e.target.value)} />
       </Field>
       <Field label="Known allergies (optional)">
