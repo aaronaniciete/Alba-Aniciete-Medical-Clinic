@@ -77,6 +77,21 @@ function todayIso() {
 export default function BookingApp() {
   const [step, setStep] = useState("landing"); // landing | form | confirmation
   const [confirmedInfo, setConfirmedInfo] = useState(null);
+  const [notice, setNotice] = useState(null);
+
+  useEffect(() => {
+    supabase
+      .from("app_state")
+      .select("value")
+      .eq("key", "schedule-notice")
+      .maybeSingle()
+      .then(({ data, error }) => {
+        if (error) { console.error("loadNotice failed", error); return; }
+        if (data && data.value && data.value.active && data.value.message) {
+          setNotice(data.value.message);
+        }
+      });
+  }, []);
 
   return (
     <div style={styles.page}>
@@ -88,6 +103,8 @@ export default function BookingApp() {
           <div style={styles.clinicSub}>{CLINIC.address}</div>
         </div>
       </header>
+
+      {notice && <div style={styles.scheduleNotice}>{notice}</div>}
 
       {step === "landing" && <Landing onStart={() => setStep("form")} />}
       {step === "form" && (
@@ -390,6 +407,7 @@ const styles = {
   header: { display: "flex", alignItems: "center", gap: 12, maxWidth: 480, margin: "0 auto 20px" },
   clinicName: { fontFamily: "Fraunces, serif", fontSize: 16, color: "#12312D", lineHeight: 1.2 },
   clinicSub: { fontSize: 11.5, color: "#5B6B68" },
+  scheduleNotice: { maxWidth: 480, margin: "0 auto 16px", background: "#FBF1DF", border: "1px solid #EAD6A8", borderRadius: 10, padding: "10px 14px", fontSize: 13, color: "#6B4A1F", lineHeight: 1.5, fontWeight: 600 },
   card: { maxWidth: 480, margin: "0 auto", background: "#fff", borderRadius: 14, padding: 24, border: "1px solid #E4EAE8", boxShadow: "0 8px 30px rgba(15,45,40,0.06)" },
   h1: { fontFamily: "Fraunces, serif", fontSize: 22, color: "#12312D", margin: "0 0 10px", textAlign: "center" },
   p: { fontSize: 14, color: "#2A3B38", lineHeight: 1.6, textAlign: "center" },
