@@ -136,7 +136,7 @@ function Landing({ onStart }) {
       <button style={styles.primaryBtn} onClick={onStart}>Book now</button>
 
       <div style={styles.locationBox}>
-        <img src="/clinic-exterior.jpg" alt="Alba-Aniciete Medical Clinic building" style={styles.locationPhoto} />
+        <img src="/clinic-exterior.jpg" alt="Map showing Alba-Aniciete Medical Clinic location" style={styles.locationPhoto} />
         <div style={{ padding: "12px 14px" }}>
           <div style={styles.hoursTitle}>Find us</div>
           <div style={{ fontSize: 13, color: "#12312D", marginBottom: 10 }}>{CLINIC.address}</div>
