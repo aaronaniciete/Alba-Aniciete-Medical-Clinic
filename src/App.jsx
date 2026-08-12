@@ -268,7 +268,7 @@ function BookingForm({ onDone, onCancel }) {
 
   return (
     <div style={styles.card}>
-      <h1 style={styles.h1}>Patient & appointment details</h1>
+      <h1 style={styles.h1}>Appointment</h1>
 
       <SectionLabel>Patient information</SectionLabel>
       <Field label="Full name">
