@@ -104,7 +104,12 @@ export default function BookingApp() {
         </div>
       </header>
 
-      {notice && <div style={styles.scheduleNotice}>{notice}</div>}
+      {notice && (
+        <div style={styles.scheduleNotice}>
+          <span style={{ fontSize: 20, lineHeight: 1 }}>📣</span>
+          <span>{notice}</span>
+        </div>
+      )}
 
       {step === "landing" && <Landing onStart={() => setStep("form")} />}
       {step === "form" && (
@@ -346,9 +351,11 @@ function BookingForm({ onDone, onCancel }) {
 
       <SectionLabel>Payment</SectionLabel>
       <div style={styles.noteBox}>
-        Send your payment via GCash to <b>{CLINIC.gcashNumber}</b>, then enter the reference
-        number from your GCash receipt below. Your slot is confirmed once the clinic verifies it.
+        Scan the QR code below or send payment via GCash to <b>{CLINIC.gcashNumber}</b>, then
+        enter the reference number from your GCash receipt. Your slot is confirmed once the
+        clinic verifies it.
       </div>
+      <img src="/gcash-qr.jpg" alt="GCash QR code for Alba-Aniciete Medical Clinic" style={styles.qrImage} />
       <Field label="GCash reference number">
         <input style={styles.input} value={gcashReference} onChange={(e) => setGcashReference(e.target.value)} placeholder="e.g. 1234567890123" />
       </Field>
@@ -407,7 +414,7 @@ const styles = {
   header: { display: "flex", alignItems: "center", gap: 12, maxWidth: 480, margin: "0 auto 20px" },
   clinicName: { fontFamily: "Fraunces, serif", fontSize: 16, color: "#12312D", lineHeight: 1.2 },
   clinicSub: { fontSize: 11.5, color: "#5B6B68" },
-  scheduleNotice: { maxWidth: 480, margin: "0 auto 16px", background: "#FBF1DF", border: "1px solid #EAD6A8", borderRadius: 10, padding: "10px 14px", fontSize: 13, color: "#6B4A1F", lineHeight: 1.5, fontWeight: 600 },
+  scheduleNotice: { maxWidth: 480, margin: "0 auto 18px", background: "#0F5E56", borderRadius: 12, padding: "14px 18px", fontSize: 15.5, color: "#fff", lineHeight: 1.5, fontWeight: 700, boxShadow: "0 6px 20px rgba(15,94,86,0.35)", display: "flex", alignItems: "flex-start", gap: 10 },
   card: { maxWidth: 480, margin: "0 auto", background: "#fff", borderRadius: 14, padding: 24, border: "1px solid #E4EAE8", boxShadow: "0 8px 30px rgba(15,45,40,0.06)" },
   h1: { fontFamily: "Fraunces, serif", fontSize: 22, color: "#12312D", margin: "0 0 10px", textAlign: "center" },
   p: { fontSize: 14, color: "#2A3B38", lineHeight: 1.6, textAlign: "center" },
@@ -429,7 +436,8 @@ const styles = {
   footer: { textAlign: "center", fontSize: 12, color: "#8A9793", marginTop: 24 },
   footerLink: { color: "#0F5E56", fontWeight: 600, textDecoration: "none" },
   locationBox: { marginTop: 20, borderRadius: 10, overflow: "hidden", border: "1px solid #E4EAE8" },
-  locationPhoto: { width: "100%", height: 160, objectFit: "cover", display: "block" },
+  locationPhoto: { width: "100%", height: "auto", display: "block" },
+  qrImage: { width: "100%", maxWidth: 260, display: "block", margin: "4px auto 16px", borderRadius: 10, border: "1px solid #E4EAE8" },
   linkBtn: { display: "inline-block", background: "#0F5E56", color: "#fff", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7 },
   linkBtnOutline: { display: "inline-block", background: "#fff", color: "#0F5E56", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7, border: "1px solid #0F5E56" },
 };
