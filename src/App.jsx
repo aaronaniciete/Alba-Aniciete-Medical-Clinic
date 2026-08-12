@@ -13,6 +13,8 @@ const CLINIC = {
   phone: "+639175605585",
   // TODO: put your real GCash number and/or QR code image here.
   gcashNumber: "0949 801 2414 (Aaron Paul Aniciete)",
+  facebookUrl: "https://www.facebook.com/albanicietemedicalclinic",
+  googleMapsUrl: "https://maps.app.goo.gl/qEzc7dVGftMCe8MM8",
 };
 
 // Doctor's weekly hours. Every day is open — Thursday just closes earlier.
@@ -100,7 +102,10 @@ export default function BookingApp() {
       {step === "confirmation" && <Confirmation info={confirmedInfo} onBackHome={() => setStep("landing")} />}
 
       <footer style={styles.footer}>
-        Questions? Call or text the clinic at {CLINIC.phone}.
+        Questions? Call or text the clinic at {CLINIC.phone}, or{" "}
+        <a href={CLINIC.facebookUrl} target="_blank" rel="noopener noreferrer" style={styles.footerLink}>
+          message us on Facebook
+        </a>.
       </footer>
     </div>
   );
@@ -129,6 +134,22 @@ function Landing({ onStart }) {
       </div>
 
       <button style={styles.primaryBtn} onClick={onStart}>Book now</button>
+
+      <div style={styles.locationBox}>
+        <img src="/clinic-exterior.jpg" alt="Alba-Aniciete Medical Clinic building" style={styles.locationPhoto} />
+        <div style={{ padding: "12px 14px" }}>
+          <div style={styles.hoursTitle}>Find us</div>
+          <div style={{ fontSize: 13, color: "#12312D", marginBottom: 10 }}>{CLINIC.address}</div>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <a href={CLINIC.googleMapsUrl} target="_blank" rel="noopener noreferrer" style={styles.linkBtn}>
+              Open in Google Maps
+            </a>
+            <a href={CLINIC.facebookUrl} target="_blank" rel="noopener noreferrer" style={styles.linkBtnOutline}>
+              Follow us on Facebook
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -388,6 +409,11 @@ const styles = {
   slotBtnSelected: { background: "#0F5E56", borderColor: "#0F5E56", color: "#fff" },
   slotBtnTaken: { background: "#F1F4F3", color: "#B4BAB8", borderColor: "#E4EAE8", cursor: "not-allowed", textDecoration: "line-through" },
   footer: { textAlign: "center", fontSize: 12, color: "#8A9793", marginTop: 24 },
+  footerLink: { color: "#0F5E56", fontWeight: 600, textDecoration: "none" },
+  locationBox: { marginTop: 20, borderRadius: 10, overflow: "hidden", border: "1px solid #E4EAE8" },
+  locationPhoto: { width: "100%", height: 160, objectFit: "cover", display: "block" },
+  linkBtn: { display: "inline-block", background: "#0F5E56", color: "#fff", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7 },
+  linkBtnOutline: { display: "inline-block", background: "#fff", color: "#0F5E56", textDecoration: "none", fontSize: 12.5, fontWeight: 600, padding: "8px 12px", borderRadius: 7, border: "1px solid #0F5E56" },
 };
 
 const globalCss = `
