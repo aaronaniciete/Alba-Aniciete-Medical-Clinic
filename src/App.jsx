@@ -145,7 +145,7 @@ function Landing({ onStart }) {
               Open in Google Maps
             </a>
             <a href={CLINIC.facebookUrl} target="_blank" rel="noopener noreferrer" style={styles.linkBtnOutline}>
-              Follow us on Facebook
+              View our updated clinic schedule
             </a>
           </div>
         </div>
