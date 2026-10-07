@@ -128,9 +128,6 @@ export default function BookingApp() {
         <a href={CLINIC.facebookUrl} target="_blank" rel="noopener noreferrer" style={styles.footerLink}>
           message us on Facebook
         </a>.
-        <div style={styles.footerNote}>
-          Clinic hours are subject to change. Any schedule updates will be posted in our Clinic Advisory.
-        </div>
       </footer>
     </div>
   );
@@ -141,9 +138,14 @@ function Landing({ onStart }) {
     <div style={styles.card}>
       <img src="/logo-full.png" alt={CLINIC.name} style={{ width: 200, display: "block", margin: "0 auto 18px" }} />
 
-      <div style={styles.hoursBoxHighlight}>
-        <div style={styles.hoursTitleHighlight}>Clinic Hours</div>
-        <div style={styles.hoursRow}><span>Monday – Sunday</span><span>9:00 AM – 3:30 PM</span></div>
+      <div style={styles.hoursCard}>
+        <span style={styles.hoursPill}><span style={styles.hoursDot} />Open Daily</span>
+        <div style={styles.hoursDays}>Monday – Sunday</div>
+        <div style={styles.hoursTime}>9:00 AM – 3:30 PM</div>
+        <div style={styles.hoursDivider} />
+        <div style={styles.hoursNoteText}>
+          Clinic hours are subject to change. Any schedule updates will be posted in our Clinic Advisory.
+        </div>
       </div>
 
       <div style={styles.locationBox}>
@@ -535,6 +537,13 @@ const styles = {
   p: { fontSize: 14, color: "#2A3B38", lineHeight: 1.6, textAlign: "center" },
   hoursBox: { background: "#F7F8F7", borderRadius: 10, padding: "12px 14px", margin: "16px 0" },
   hoursTitle: { fontSize: 11.5, fontWeight: 700, color: "#5B6B68", textTransform: "uppercase", letterSpacing: 0.3, marginBottom: 6 },
+  hoursCard: { background: "linear-gradient(160deg,#0F5E56,#0F2925)", borderRadius: 16, padding: "22px 20px 16px", margin: "0 0 16px", color: "#fff", textAlign: "center" },
+  hoursPill: { display: "inline-flex", alignItems: "center", gap: 7, background: "rgba(255,255,255,0.12)", borderRadius: 99, padding: "5px 12px", fontSize: 11.5, fontWeight: 600, letterSpacing: 0.6, textTransform: "uppercase", color: "#CDE7E2" },
+  hoursDot: { width: 8, height: 8, borderRadius: "50%", background: "#5EE0A0", boxShadow: "0 0 0 3px rgba(94,224,160,0.25)", display: "inline-block" },
+  hoursDays: { fontFamily: "Fraunces, Georgia, serif", fontSize: 15, color: "#9FC4BE", marginTop: 14 },
+  hoursTime: { fontFamily: "Fraunces, Georgia, serif", fontSize: 30, fontWeight: 600, marginTop: 4, letterSpacing: 0.3 },
+  hoursDivider: { height: 1, background: "rgba(255,255,255,0.15)", margin: "16px 0 10px" },
+  hoursNoteText: { fontSize: 10, color: "#9FC4BE", lineHeight: 1.5 },
   hoursBoxHighlight: { background: "#EAF3F1", border: "1.5px solid #0F5E56", borderRadius: 10, padding: "14px 16px", margin: "0 0 16px" },
   hoursTitleHighlight: { fontSize: 13, fontWeight: 800, color: "#0F5E56", textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 },
   hoursRow: { display: "flex", justifyContent: "space-between", fontSize: 13.5, color: "#12312D", padding: "3px 0", fontFamily: "IBM Plex Mono, monospace" },
@@ -551,7 +560,6 @@ const styles = {
   slotBtnSelected: { background: "#0F5E56", borderColor: "#0F5E56", color: "#fff" },
   slotBtnTaken: { background: "#F1F4F3", color: "#B4BAB8", borderColor: "#E4EAE8", cursor: "not-allowed", textDecoration: "line-through" },
   footer: { textAlign: "center", fontSize: 12, color: "#8A9793", marginTop: 24 },
-  footerNote: { fontSize: 10, color: "#A3AEAB", marginTop: 6 },
   footerLink: { color: "#0F5E56", fontWeight: 600, textDecoration: "none" },
   locationBox: { marginTop: 20, borderRadius: 10, overflow: "hidden", border: "1px solid #E4EAE8" },
   faqSection: { marginTop: 24 },
