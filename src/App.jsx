@@ -17,13 +17,13 @@ const CLINIC = {
   googleMapsUrl: "https://maps.app.goo.gl/qEzc7dVGftMCe8MM8",
 };
 
-// Doctor's weekly hours. Every day is open — Thursday just closes earlier.
+// Doctor's weekly hours. Open every day, 9:00 AM – 3:30 PM.
 const CLINIC_HOURS = {
   0: { open: "09:00", close: "15:30" }, // Sunday
   1: { open: "09:00", close: "15:30" }, // Monday
   2: { open: "09:00", close: "15:30" }, // Tuesday
   3: { open: "09:00", close: "15:30" }, // Wednesday
-  4: { open: "09:00", close: "13:30" }, // Thursday
+  4: { open: "09:00", close: "15:30" }, // Thursday
   5: { open: "09:00", close: "15:30" }, // Friday
   6: { open: "09:00", close: "15:30" }, // Saturday
 };
@@ -128,6 +128,9 @@ export default function BookingApp() {
         <a href={CLINIC.facebookUrl} target="_blank" rel="noopener noreferrer" style={styles.footerLink}>
           message us on Facebook
         </a>.
+        <div style={styles.footerNote}>
+          Clinic hours are subject to change. Any schedule updates will be posted in our Clinic Advisory.
+        </div>
       </footer>
     </div>
   );
@@ -140,9 +143,7 @@ function Landing({ onStart }) {
 
       <div style={styles.hoursBoxHighlight}>
         <div style={styles.hoursTitleHighlight}>Clinic Hours</div>
-        <div style={styles.hoursRow}><span>Monday – Wednesday</span><span>9:00 AM – 3:30 PM</span></div>
-        <div style={styles.hoursRow}><span>Thursday</span><span>9:00 AM – 1:30 PM</span></div>
-        <div style={styles.hoursRow}><span>Friday – Sunday</span><span>9:00 AM – 3:30 PM</span></div>
+        <div style={styles.hoursRow}><span>Monday – Sunday</span><span>9:00 AM – 3:30 PM</span></div>
       </div>
 
       <div style={styles.locationBox}>
@@ -550,6 +551,7 @@ const styles = {
   slotBtnSelected: { background: "#0F5E56", borderColor: "#0F5E56", color: "#fff" },
   slotBtnTaken: { background: "#F1F4F3", color: "#B4BAB8", borderColor: "#E4EAE8", cursor: "not-allowed", textDecoration: "line-through" },
   footer: { textAlign: "center", fontSize: 12, color: "#8A9793", marginTop: 24 },
+  footerNote: { fontSize: 10, color: "#A3AEAB", marginTop: 6 },
   footerLink: { color: "#0F5E56", fontWeight: 600, textDecoration: "none" },
   locationBox: { marginTop: 20, borderRadius: 10, overflow: "hidden", border: "1px solid #E4EAE8" },
   faqSection: { marginTop: 24 },
